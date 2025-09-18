@@ -1,14 +1,15 @@
-# Utiliser une image PHP avec Apache
 FROM php:8.2-apache
 
-# Modifier la config Apache pour écouter sur le port 3000
-RUN sed -i 's/80/3000/g' /etc/apache2/ports.conf /etc/apache2/sites-enabled/000-default.conf
+# Installer les extensions PHP nécessaires
+RUN docker-php-ext-install pdo pdo_mysql mysqli
 
-# Copier tout le projet dans le dossier par défaut d'Apache
+# Copier ton app
 COPY . /var/www/html/
 
-# Exposer le port attendu par Coolify
-EXPOSE 3000
+# Donner les bons droits à Apache
+RUN chown -R www-data:www-data /var/www/html
 
-# Lancer Apache en mode foreground
+# Exposer Apache
+EXPOSE 80
+
 CMD ["apache2-foreground"]
