@@ -5,7 +5,7 @@ FROM php:8.2-apache
 COPY . /var/www/html/
 
 # Exposer le port 8080 (Render utilise généralement 8080)
-EXPOSE 8080
+EXPOSE 3000
 
 # Lancer Apache en mode foreground
 CMD ["apache2-foreground"]
