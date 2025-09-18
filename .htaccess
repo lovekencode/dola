@@ -1,0 +1,8 @@
+RewriteEngine On
+
+# Redirect /s/username to /s/index.php (only if the file/directory doesn't exist)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^s/([a-zA-Z0-9_-]+)/?$ s/index.php [QSA,L]
+
+# Other existing rules can go here...

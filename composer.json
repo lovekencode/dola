@@ -1,0 +1,14 @@
+{
+    "name": "lovekenolustra/dola",
+    "description": "Landing page and app for Dola",
+    "type": "project",
+    "require": {
+        "vlucas/phpdotenv": "^5.6",
+        "google/apiclient": "^2.17"
+    },
+    "autoload": {
+        "files": [
+            "database/dbconnect.php"
+        ]
+    }
+}

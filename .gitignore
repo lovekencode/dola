@@ -1,0 +1,15 @@
+# OS / editor
+.DS_Store
+*.log
+
+# Environment and secrets
+.env
+
+# Vendor dependencies
+vendor/
+
+# Node (if any future assets)
+node_modules/
+dist/
+build/
+
