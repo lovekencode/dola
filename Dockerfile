@@ -6,7 +6,7 @@ RUN docker-php-ext-install pdo pdo_mysql
 # Ajouter Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-# Copier ton projet dans le container
+#Copier ton projet dans le container
 WORKDIR /var/www/html
 COPY . .
 
