@@ -1,15 +1,16 @@
 FROM php:8.2-apache
 
-# Installer les extensions PHP nécessaires
-RUN docker-php-ext-install pdo pdo_mysql mysqli
+# Installer extensions PHP
+RUN docker-php-ext-install pdo pdo_mysql
 
-# Copier ton app
-COPY . /var/www/html/
+# Ajouter Composer
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-# Donner les bons droits à Apache
-RUN chown -R www-data:www-data /var/www/html
+# Copier ton projet dans le container
+WORKDIR /var/www/html
+COPY . .
 
-# Exposer Apache
+# Installer les dépendances
+RUN composer install --no-dev --optimize-autoloader
+
 EXPOSE 80
-
-CMD ["apache2-foreground"]
